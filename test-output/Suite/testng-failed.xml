@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test1(failed)">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="ProductTestCases.ProductTest">
+        <methods>
+          <include name="updateProductTest"/>
+          <include name="createProductTest"/>
+          <include name="viewProductsTest"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="deleteProductTest"/>
+        </methods>
+      </class> <!-- ProductTestCases.ProductTest -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+  <test thread-count="5" name="Test2(failed)">
+    <parameter name="browserName" value="firefox"/>
+    <classes>
+      <class name="ProductTestCases.ProductTest">
+        <methods>
+          <include name="updateProductTest"/>
+          <include name="createProductTest"/>
+          <include name="viewProductsTest"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="deleteProductTest"/>
+        </methods>
+      </class> <!-- ProductTestCases.ProductTest -->
+    </classes>
+  </test> <!-- Test2(failed) -->
+</suite> <!-- Failed suite [Suite] -->

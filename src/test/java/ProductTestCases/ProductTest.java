@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import CRUD.Products;
@@ -29,7 +31,7 @@ public class ProductTest {
 		driver = new ChromeDriver ();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://somesh-verenkar.herokuapp.com/admin/login");
+		driver.get("USE YOUR OWN DEMO SITE");
 		driver.findElement(By.id("admin_user_email")).sendKeys("admin@example.com");
 		driver.findElement(By.id("admin_user_password")).sendKeys("password");
 		driver.findElement(By.name("commit")).click();
@@ -37,24 +39,28 @@ public class ProductTest {
 	}
 	
 //	not creating any dependency between methods
+//	@Parameters //build a connection b/w TC & testNG class by passing the address of parameter inside name attribute in testNG class
 	@Test
 	public void createProductTest() {
-		Products products = new Products("COVID19", "Danger", "Get Vaccinated"); //hard coding the data here to avoid external resources
-		String successMsg = productsPage.addProduct(products); //calling all the methods of the products page
-		Assert.assertEquals(successMsg, "Product was successfully created."); //Passed
+//	creating products class object & passing test data
+		Products products = new Products("COVID19", "Danger", "Get Vaccinated"); //hard coding the data here to avoid external resources, POJO class is applicable here
+		String successMsg = productsPage.addProduct(products); //creating object to call all the methods of the products page
+		Assert.assertEquals(successMsg, "Product was successfully created."); //Passed - without assertion test is not complete
+	
+
 	}
 	
-	@Test
+	@Test()
 	public void updateProductTest() {
 		Products products = new Products("samsung", "china", "black"); //hard coding the data here to avoid external resources
 		productsPage.addProduct(products); //calling all the methods of the products page
-		products.setTitle("Laptop");
+		products.setTitle("Laptop");//using setter method to update the specific entry
 		products.setSku("india");
-		String successMsg = productsPage.updateProduct(products, products.getTitle());
+		String successMsg = productsPage.updateProduct(products, products.getTitle());//using products.getTitle method to avoid hard coded value
 		Assert.assertEquals(successMsg, "Product was successfully updated."); //Passed
 	}
 	
-	@Test
+	@Test()
 	public void deleteProductTest() {
 		Products products = new Products("xiomi", "pakistan", "white"); //hard coding the data here to avoid external resources
 		productsPage.addProduct(products); //calling all the methods of the products page
@@ -62,16 +68,17 @@ public class ProductTest {
 		Assert.assertEquals(successMsg, "Product was successfully destroyed."); //Passed
 	}
 	
-	@Test
+//	to retrieve the product
+	@Test()
 	public void viewProductsTest() {
 		Products products = new Products("nokia", "USA", "blue"); //hard coding the data here to avoid external resources
 		productsPage.addProduct(products); //calling all the methods of the products page
 		String actualTitle = productsPage.getProduct(products, "nokia");
-		Assert.assertEquals(actualTitle, products.getTitle()); //Passed
+		Assert.assertEquals(actualTitle, products.getTitle()); //Passed - also can be used hard coded data here
 	}
 	
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}	
 }

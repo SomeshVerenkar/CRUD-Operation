@@ -1,6 +1,7 @@
 package CRUD;
 
-public class Products {  // I am using POJO approach i.e. Plain Old Java Object approach
+public class Products {  // I am using POJO approach i.e. Plain Old Java Object approach, here I will be using getters and setters constructor
+//	to avoid using so many parameters 	
 	
 //  maintaining products object in this template
 //	declaring private variables
@@ -8,7 +9,7 @@ public class Products {  // I am using POJO approach i.e. Plain Old Java Object 
 	private String sku;
 	private String description;
 	
-//	Creating public constructor
+//	generating public constructor for private class
 	public Products(String title, String sku, String description) {
 		this.title = title;
 		this.sku = sku;
@@ -16,7 +17,7 @@ public class Products {  // I am using POJO approach i.e. Plain Old Java Object 
 	}
 
 //	Creating getters and setters method so that I can fetch the respected values at the run time
-//	also capture and update the values 
+//	also want to capture and update the values 
 	public String getTitle() {
 		return title;
 	}
@@ -40,12 +41,4 @@ public class Products {  // I am using POJO approach i.e. Plain Old Java Object 
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-
-	
-	
-	
-	
-	
-	
 }
