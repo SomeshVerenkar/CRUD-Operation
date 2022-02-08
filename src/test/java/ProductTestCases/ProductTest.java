@@ -31,7 +31,7 @@ public class ProductTest {
 		driver = new ChromeDriver ();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("USE YOUR OWN DEMO SITE");
+		driver.get("CANNOT PROVIDE THE URL - CONFIDENTIAL");
 		driver.findElement(By.id("admin_user_email")).sendKeys("admin@example.com");
 		driver.findElement(By.id("admin_user_password")).sendKeys("password");
 		driver.findElement(By.name("commit")).click();
